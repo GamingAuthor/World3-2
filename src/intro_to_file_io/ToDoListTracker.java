@@ -61,6 +61,25 @@ public class ToDoListTracker implements ActionListener {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		String lister = "";
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("src/intro_to_file_io/ToDoList.txt"));
+			String line = br.readLine();
+			while(line != null){	
+				lister+=(line + "\n");
+				line = br.readLine();
+			}					
+
+			JOptionPane.showMessageDialog(null, lister);
+			br.close();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	
 	}
 
 	@Override
@@ -86,7 +105,7 @@ public class ToDoListTracker implements ActionListener {
 			System.out.println(ash);
 			FileWriter fw = null;
 			try {
-				fw = new FileWriter("src/intro_to_file_io/ToDoList.txt",true);
+				fw = new FileWriter("src/intro_to_file_io/ToDoList.txt");
 			} catch (IOException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
@@ -106,13 +125,16 @@ public class ToDoListTracker implements ActionListener {
 			}
 		}
 		if(e.getSource().equals(load)) {
+			String lister = "";
 			try {
 				BufferedReader br = new BufferedReader(new FileReader("src/intro_to_file_io/ToDoList.txt"));
 				String line = br.readLine();
 				while(line != null){	
-					JOptionPane.showMessageDialog(null, line);
+					lister+=(line + "\n");
 					line = br.readLine();
-				}
+				}					
+
+				JOptionPane.showMessageDialog(null, lister);
 				br.close();
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
